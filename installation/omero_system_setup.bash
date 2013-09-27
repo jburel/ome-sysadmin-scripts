@@ -109,16 +109,33 @@ if [ -f /etc/nginx/conf.d/default.conf ]; then
     mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.disabled
 fi
 
-# TODO: This doesn't work- attempt to server OMERO.web from a subdirectory
-#sudo -u "$USERNAME" "$OMERO" web config --system nginx --http 80 | \
-#    sed -e "s/location \//location \/$INSTANCE\//" > \
-#    "/etc/nginx/conf.d/$INSTANCE.conf"
-#
-#sudo -u "$USERNAME" "$OMERO" config set omero.web.static_url \
-#    "/$INSTANCE/static/"
-
+# Modify nginx.conf to serve OMERO.web from a subdirectory
+# TODO: Automatically set a unique fastcgi port for each instance
+# TODO: At present you'll need to manually merge multiple instances
+# into a single server block.
+INSTANCE_FCPORT=4080
 sudo -u "$USERNAME" "$OMERO" web config --system nginx --http 80 > \
     "/etc/nginx/conf.d/$INSTANCE.conf"
+sed -i.bak \
+    -e "s/location \//location \/$INSTANCE\//" \
+    -e "s/fastcgi_pass 0.0.0.0:4080;/fastcgi_pass 0.0.0.0:$INSTANCE_FCPORT;/" \
+    -e "s/fastcgi_param PATH_INFO \$fastcgi_script_name;/\\
+            fastcgi_split_path_info ^(\/$INSTANCE)(.*)\$;\\
+            fastcgi_param PATH_INFO \$fastcgi_path_info;\\
+            fastcgi_param SCRIPT_NAME \$fastcgi_script_name;/" \
+    -e 's/# fastcgi_param HTTPS $https;/fastcgi_param HTTPS $https;/' \
+    "/etc/nginx/conf.d/$INSTANCE.conf"
+
+sed -i.bak \
+    -e '/"omero.web.static_url"/i \
+    "omero.web.force_script_name": ["FORCE_SCRIPT_NAME", None, leave_none_unset],' \
+    "$OMERO_PREFIX/lib/python/omeroweb/settings.py"
+
+sudo -u "$USERNAME" "$OMERO" config set omero.web.static_url \
+    "/$INSTANCE/static/"
+sudo -u "$USERNAME" "$OMERO" config set omero.web.force_script_name \
+    "/$INSTANCE"
+
 service nginx restart
 
 echo
