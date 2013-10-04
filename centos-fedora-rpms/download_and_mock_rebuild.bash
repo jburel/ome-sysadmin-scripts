@@ -28,6 +28,12 @@ download_and_build() {
 	mv /var/lib/mock/ome-6-x86_64/result/$PACKAGE-*.rpm $RPMS_DIR
 }
 
+if [ ! -f /etc/mock/ome-6-x86_64.cfg ]; then
+	echo "Missing mock config: /etc/mock/ome-6-x86_64.cfg"
+	echo "Download from https://github.com/manics/centos-rpms/blob/master/mock-configs/ome-6-x86_64.cfg"
+	exit 1
+fi
+
 rm -rf $BASE_DIR
 mkdir -p $RPMS_DIR
 mkdir -p $DEBUG_DIR
