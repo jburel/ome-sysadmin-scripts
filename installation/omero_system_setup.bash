@@ -101,7 +101,7 @@ sudo -u "$USERNAME" \
     PGPASSWORD="$DBPASS" psql -hlocalhost -U"$DBUSER" "$DBNAME" -f "$OMEROSQL"
 
 echo "Increasing Java heap size"
-sudo -u "$USERNAME" sed -i.bak -e 's/Xmx512M/Xmx2048M/' \
+sudo -u "$USERNAME" sed -i.bak -e "s/Xmx512M/Xmx${MEMORY}M/" \
     "$OMERO_PREFIX/etc/grid/templates.xml"
 
 echo "Configuring OMERO web"
