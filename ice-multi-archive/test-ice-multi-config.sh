@@ -22,7 +22,7 @@ test_ice_version()
 	echo PATH=$PATH
 	echo LD_LIBRARY_PATH=$LD_LIBRARY_PATH
 	echo LIBPATH=$LIBPATH
-	echo SLICEPATH=$SLICEPATH
+	#echo SLICEPATH=$SLICEPATH
 	echo "`icegridadmin --version`"
 	test "`icegridadmin --version`" = $2 || \
 		failed "icegridadmin version is incorrect"
