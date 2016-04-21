@@ -62,10 +62,11 @@ wget https://zeroc.com/download/rpm/el6/x86_64/db53-5.3.28-1ice.el6.x86_64.rpm
 wget https://zeroc.com/download/rpm/el6/x86_64/db53-utils-5.3.28-1ice.el6.x86_64.rpm
 wget https://zeroc.com/download/rpm/el6/x86_64/db53-devel-5.3.28-1ice.el6.x86_64.rpm
 wget https://zeroc.com/download/rpm/el6/x86_64/db53-java-5.3.28-1ice.el6.x86_64.rpm
-wget https://zeroc.com/download/rpm/el6/x86_64/ice-all-devel-3.6.2-1.el6.x86_64.rpm
-wget https://zeroc.com/download/rpm/el6/x86_64/ice-all-runtime-3.6.2-1.el6.x86_64.rpm
 wget https://zeroc.com/download/rpm/el6/x86_64/glacier2-3.6.2-1.el6.x86_64.rpm
 wget https://zeroc.com/download/rpm/el6/x86_64/ice-3.6.2-1.el6.x86_64.rpm
+wget https://zeroc.com/download/rpm/el6/x86_64/ice-all-devel-3.6.2-1.el6.x86_64.rpm
+wget https://zeroc.com/download/rpm/el6/x86_64/ice-all-runtime-3.6.2-1.el6.x86_64.rpm
+wget https://zeroc.com/download/rpm/el6/x86_64/ice-debuginfo-3.6.2-1.el6.x86_64.rpm
 wget https://zeroc.com/download/rpm/el6/x86_64/ice-utils-3.6.2-1.el6.x86_64.rpm
 wget https://zeroc.com/download/rpm/el6/x86_64/icebox-3.6.2-1.el6.x86_64.rpm
 wget https://zeroc.com/download/rpm/el6/x86_64/icegrid-3.6.2-1.el6.x86_64.rpm
@@ -76,6 +77,11 @@ wget https://zeroc.com/download/rpm/el6/x86_64/libice-java-3.6.2-1.el6.x86_64.rp
 wget https://zeroc.com/download/rpm/el6/x86_64/libice3.6-c%2B%2B-3.6.2-1.el6.x86_64.rpm
 wget https://zeroc.com/download/rpm/el6/x86_64/libicestorm3.6-3.6.2-1.el6.x86_64.rpm
 wget https://zeroc.com/download/rpm/el6/x86_64/mcpp-devel-2.7.2-3ice.el6.x86_64.rpm
+wget https://zeroc.com/download/rpm/el6/x86_64/php-ice-3.6.2-1.el6.x86_64.rpm
+wget https://zeroc.com/download/rpm/el6/x86_64/php-ice-devel-3.6.2-1.el6.x86_64.rpm
+
+wget https://zeroc.com/download/rpm/el6/noarch/ice-slice-3.6.2-1.el6.noarch.rpm
+wget https://zeroc.com/download/rpm/el6/noarch/ice-utils-java-3.6.2-1.el6.noarch.rpm
 
 
 cd ..
