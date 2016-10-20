@@ -41,4 +41,4 @@ test_ice_version ice362 3.6.2
 test_ice_version ice33 3.3.1
 test_ice_version ice34 3.4.2
 test_ice_version ice35 3.5.1
-test_ice_version ice36 3.6.2
+test_ice_version ice36 3.6.3
